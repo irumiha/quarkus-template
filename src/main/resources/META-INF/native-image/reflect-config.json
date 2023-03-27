@@ -1,0 +1,6 @@
+[
+{
+  "name":"org.postgresql.jdbc.PgResultSetMetaData",
+  "methods":[{"name":"getBaseTableName","parameterTypes":["int"] }]
+}
+]

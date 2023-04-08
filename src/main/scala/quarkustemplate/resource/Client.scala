@@ -18,7 +18,7 @@ case class Client(
     phoneNum3: Option[String])
 
 object Client {
-  val parser =
+  val parser: RowParser[Client] =
     get[String]("short_name") ~
       get[String]("long_name") ~
       get[String]("address") ~

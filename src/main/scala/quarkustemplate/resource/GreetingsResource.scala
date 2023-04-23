@@ -11,9 +11,7 @@ case class HelloResponse(message: String)
 case class HelloRequest(name: String, sort: String)
 
 @Path("/hello")
-class GreetingsResource(
-    clientRepository: ClientRepository,
-    jdbc: Jdbc) {
+class GreetingsResource(clientRepository: ClientRepository, jdbc: Jdbc) {
 
   @POST
   @Path("/named")
@@ -24,18 +22,19 @@ class GreetingsResource(
   @Path("html")
   @Produces(Array(MediaType.TEXT_HTML))
   @Blocking
-  def helloHtml(@QueryParam("name") name: String): String = jdbc.withConnection { implicit connection =>
-    val cl = clientRepository.findByName(name)
+  def helloHtml(@QueryParam("name") name: String): String = jdbc.withConnection {
+    implicit connection =>
+      val cl = clientRepository.findByName(name)
 
-    "<!DOCTYPE html>" + html(
-      head(title := "This is a title"),
-      body(
-        div(
-          h1(id := "title", "This is a title"),
-          p("This is a big paragraph of text"),
-          p(s"Client name: ${cl.headOption.map(_.shortName).getOrElse("Not found")}")
+      "<!DOCTYPE html>" + html(
+        head(title := "This is a title"),
+        body(
+          div(
+            h1(id := "title", "This is a title"),
+            p("This is a big paragraph of text"),
+            p(s"Client name: ${cl.headOption.map(_.shortName).getOrElse("Not found")}")
+          )
         )
       )
-    )
   }
 }

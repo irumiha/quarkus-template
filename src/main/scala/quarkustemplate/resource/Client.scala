@@ -15,7 +15,8 @@ case class Client(
     email: Option[String],
     phoneNum: Option[String],
     phoneNum2: Option[String],
-    phoneNum3: Option[String])
+    phoneNum3: Option[String]
+)
 
 object Client {
   val parser: RowParser[Client] =

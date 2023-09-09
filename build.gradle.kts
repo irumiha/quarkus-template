@@ -20,6 +20,8 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-scala_2.13")
     implementation("io.quarkus:quarkus-agroal")
     implementation("io.quarkus:quarkus-smallrye-openapi")
+    implementation("io.quarkus:quarkus-smallrye-jwt")
+    implementation("io.quarkus:quarkus-smallrye-jwt-build")
     implementation("io.quarkus:quarkus-flyway")
     implementation("io.quarkus:quarkus-jdbc-postgresql")
     implementation("com.lihaoyi:scalatags_2.13:0.12.0")
@@ -27,7 +29,7 @@ dependencies {
     implementation("io.quarkus:quarkus-micrometer")
     implementation("io.quarkus:quarkus-micrometer-registry-prometheus")
     implementation("io.quarkus:quarkus-scala")
-    implementation("org.scala-lang:scala-library:2.12.13")
+    implementation("org.scala-lang:scala-library:2.13.11")
     implementation("org.scala-lang.modules:scala-java8-compat_2.13:1.0.2")
     implementation("io.quarkus:quarkus-arc")
     testImplementation("io.quarkus:quarkus-junit5")
@@ -48,4 +50,10 @@ tasks.withType<ScalaCompile> {
     scalaCompileOptions.encoding = "UTF-8"
     sourceCompatibility = JavaVersion.VERSION_1_8.toString()
     targetCompatibility = JavaVersion.VERSION_1_8.toString()
+}
+
+tasks.register("runJwtGenerate", JavaExec::class) {
+    classpath = sourceSets.main.get().runtimeClasspath
+    mainClass.set("quarkustemplate.util.GenerateToken")
+    jvmArgs("-Dsmallrye.jwt.sign.key.location=privateKey.pem")
 }

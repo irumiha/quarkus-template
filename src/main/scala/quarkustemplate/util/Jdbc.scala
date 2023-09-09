@@ -5,7 +5,7 @@ package quarkustemplate.util
 import io.agroal.api.AgroalDataSource
 
 import java.sql.Connection
-import javax.enterprise.context.ApplicationScoped
+import jakarta.enterprise.context.ApplicationScoped
 import scala.language.implicitConversions
 import scala.util.control.ControlThrowable
 

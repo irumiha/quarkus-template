@@ -69,3 +69,7 @@ If you want to learn more about building native executables, please consult http
 
 - Flyway ([guide](https://quarkus.io/guides/flyway)): Handle your database schema migrations
 - Micrometer Registry Prometheus ([guide](https://quarkus.io/guides/micrometer)): Enable Prometheus support for Micrometer
+
+## Temporary JWT for testing
+
+To generate a JWT token for testing you can run the `runJwtGenerate` gradle task.

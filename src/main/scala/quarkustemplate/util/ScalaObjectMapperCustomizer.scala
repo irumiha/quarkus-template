@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.scala.DefaultScalaModule
 import io.quarkus.jackson.ObjectMapperCustomizer
 
-import javax.inject.Singleton
+import jakarta.inject.Singleton
 
 @Singleton
 class ScalaObjectMapperCustomizer extends ObjectMapperCustomizer {

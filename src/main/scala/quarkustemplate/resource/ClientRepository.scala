@@ -3,7 +3,7 @@ package quarkustemplate.resource
 import anorm._
 
 import java.sql.Connection
-import javax.enterprise.context.ApplicationScoped
+import jakarta.enterprise.context.ApplicationScoped
 
 @ApplicationScoped
 class ClientRepository {
